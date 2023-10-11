@@ -16,7 +16,7 @@ AWS Services such as CLI, IAM, S3, Lambda, Glue, and RedShift were selected for 
 * Note: The pipeline was built to handle larges ammounts of data with services such as S3, Glue and Redshift enabling scalability
 
 The following diagram shows the high-level architecture of the pipeline:
-[diagram]
+![image](https://github.com/paulohader/spotify-etl/assets/122403781/626a18c5-bb12-4b6b-9a8a-2538dd3e7cc2)
 
 
 ## How does the pipepiline works?
@@ -35,6 +35,7 @@ AWS Glue Studio was selected for ETL (Extract, Transform, Load) processing:
 5. The star schema was built to optimise storage and maintain consistency
 * Note: In each step described, was possible to set the parameters needed (i.e, s3 path, transformation type, db connections)
 * Note 2: AWS Glue transforms data with Spark, Pyspark support and its DynamicFrame, handling the large ammount of data
+![aws-etl-flow](https://github.com/paulohader/spotify-etl/assets/122403781/6c62e676-6ae9-4f1e-a096-dfe9a2599539)
 
 
 ### Step by step to crete and perform each service
@@ -48,6 +49,7 @@ The cluster settings, including node type, number of nodes, database name, and o
 Connection to Amazon Redshift: A connection to the Amazon Redshift cluster was established using a SQL client tool.
 Database and Table Creation: A database was created within the Redshift cluster, and a table was set up to receive the transformed data.
 Schema Definition: The schema, including defining columns and their data types, was established based on the structure of the transformed data.
+![image](https://github.com/paulohader/spotify-etl/assets/122403781/d32ebc54-fd13-414e-94d7-70f77615de62)
 
 #### Data Ingestion:
 #### Data Lake Selection: 
@@ -68,6 +70,7 @@ Glue jobs were created to extract raw data stored in Amazon S3 and transform CSV
 A Glue ETL job was configured visually to handle the complete ETL process, including data extraction from S3, transformation, and loading into Amazon Redshift. This approach managed schema evolution and data validation.
 Direct Connection to Amazon Redshift:
 The Glue job established a direct connection to the target Amazon Redshift Data Warehouse, ensuring data was efficiently loaded into the respective tables.
+![aws-etl-job](https://github.com/paulohader/spotify-etl/assets/122403781/14d0a64a-3932-4bd8-afed-b9789cefc626)
 
 #### Pipeline Scheduling:
 AWS Glue Studio's scheduling feature was configured to automate the pipeline according to specific needs (weekly, every 2 days). This was set to run the pipeline at regular intervals, such as daily or hourly, aligning with business requirements.
@@ -76,6 +79,7 @@ AWS Glue Studio's scheduling feature was configured to automate the pipeline acc
 A star schema was implemented to optimize storage and maintain data consistency, enhancing data warehousing efficiency.
 Parameterization:
 Throughout each step, parameters such as S3 paths, transformation types, and database connections were configured to align with the unique pipeline requirements.
+
 
 #### AWS Glue's Data Transformation:
 AWS Glue employed Spark, Pyspark support, and its DynamicFrame to efficiently handle the large amount of data, optmising performance of the data transformation process.
